@@ -1,0 +1,197 @@
+# ============================================================
+#  SZAFA - zwierzatka i kostiumy
+#  Kolory: &a &c &f ... oraz &l (pogrubienie). Hex: &#RRGGBB
+# ============================================================
+
+# Wersja konfiguracji - NIE ZMIENIAJ. Przy aktualizacji pluginu stary config trafia do config.backup-vX.yml.
+config-version: 5
+
+# Strefa czasowa do wyswietlania dat wygasniecia
+timezone: "Europe/Warsaw"
+
+# Czy sam gracz ma widziec swoj kostium (w widoku z trzeciej osoby, F5).
+# Widza go zawsze inni gracze. Jesli u Ciebie cos mruga - ustaw false.
+show-costume-to-self: true
+
+# Wielkosc zwierzatka za graczem (0.5 = wielkosc glowy gracza, 1.0 = dwa razy wieksze)
+pet-scale: 0.5
+
+# Czy nad zwierzatkiem ma byc napis z jego nazwa
+pet-nametag: true
+
+# Ostrzezenie po wejsciu na serwer, gdy aktywne zwierzatko/kostium wygasa w ciagu X godzin (0 = wylaczone)
+join-warning-hours: 24
+
+# ---------------------------------------------------------------
+#  ZWOJ PRZEDLUZENIA (item). Admin: /szafaadmin scroll <gracz> <dni> [ilosc]
+#  Gracz przeciaga zwoj na item w ekwipunku albo w /szafa klika zegar pod aktywnym.
+#  {days} = liczba dni zwoju. models = tekstury z resource packa dla 7/14/30 dni.
+# ---------------------------------------------------------------
+scroll:
+  name: "&6&lZWÓJ PRZEDŁUŻENIA &8[&e{days} dni&8]"
+  default-model: "szafa:zwoj_30"
+  models:
+    7: "szafa:zwoj_7"
+    14: "szafa:zwoj_14"
+    30: "szafa:zwoj_30"
+  lore:
+    - "&6✦ &e&lMAGICZNY ZWÓJ"
+    - "&7Wydłuża czas działania aktywnego"
+    - "&7zwierzątka albo kostiumu."
+    - ""
+    - "&e&lJAK UŻYĆ:"
+    - "&8→ &fPrzeciągnij zwój na item zwierzątka"
+    - "&8   &flub kostiumu w ekwipunku"
+    - "&8→ &flub otwórz &e/szafa &fi kliknij &6zegar"
+    - ""
+    - "&7Przedłuża o: &a{days} dni"
+    - ""
+    - "&6&lSPECJALNY"
+
+# Obrot zwierzatka wzgledem gracza. Jesli zwierzatko patrzy "tylem" - ustaw 180.
+pet-yaw-offset: 0
+
+# Glowa kostiumu to osobny model na glowie gracza (nie helm). Jesli jest odwrocona tylem - ustaw 180.
+costume-head-yaw-offset: 0
+
+# Czy prawdziwy helm ma byc wizualnie ukryty, gdy kostium ma glowe 3D (helm dalej da sie nosic).
+hide-helmet-with-costume: true
+
+# ---------------------------------------------------------------
+#  ZWIERZATKA
+#  model       = ikona w GUI (glowa 3D, assets/szafa/items/<nazwa>.json)
+#  world-model = to, co lata za graczem (ta sama glowa 3D co ikona).
+#  bonuses (wszystko opcjonalne):
+#    damage-percent        +% obrazen zadawanych
+#    end-damage-percent    +% obrazen w Endzie (zastepuje damage-percent w Endzie)
+#    pvp-damage-percent    +% obrazen przeciw graczom
+#    pearl-drop-multiplier mnoznik dropu perl z endermanow
+#    pearl-refund-chance   % szansy na zwrot rzuconej perly
+#    effects               efekty stale: "TYP:poziom" (0 = I, 1 = II)
+#    kill-effects          efekty po zabiciu gracza: "TYP:poziom:czas_w_tickach"
+#    fall-damage-reduction -% obrazen od upadku (100 = brak)
+#    damage-reduction      -% wszystkich obrazen (poza upadkiem)
+# ---------------------------------------------------------------
+pets:
+  endermanek:
+    name: "&fᴢᴡɪᴇʀᴢᴀ̨ᴛᴋᴏ &7&lᴇɴᴅᴇʀᴍᴀɴᴇᴋ"
+    rarity: "&5&lEPICKI"
+    model: "szafa:pet_endermanek"
+    world-model: "szafa:pet_endermanek"
+    description:
+      - "&5✦ &d&lᴛᴀᴊᴇᴍɴɪᴄᴢʏ ᴛᴏᴡᴀʀᴢʏꜱᴢ"
+      - "&7Mały mieszkaniec Endu, który pilnuje Twoich pereł."
+      - ""
+      - "&5◆ &e&lᴅᴏᴅᴀᴛᴋɪ &fᴘᴏ ᴢᴀᴌᴏᴢ̇ᴇɴɪᴜ:"
+      - "&8➥ &cᴢᴡɪᴇ̨ᴋꜱᴢᴏɴᴇ ᴏʙʀᴀᴢ̇ᴇɴɪᴀ ᴏ &c&l20% &c(ᴇɴᴅ ᴏ &c&l30%&c)"
+      - "&8➥ &3ᴢᴡɪᴇ̨ᴋꜱᴢᴏɴʏ ᴅʀᴏᴘ ᴘᴇʀᴇᴌ ᴢ ᴇɴᴅᴇʀᴍᴀɴᴏ́ᴡ &b&lx2"
+      - "&8➥ &aꜱᴢᴀɴꜱᴀ ɴᴀ ᴢᴡʀᴏᴛ ʀᴢᴜᴄᴏɴᴇᴊ ᴘᴇʀᴌʏ &a&l25%"
+    bonuses:
+      damage-percent: 20
+      end-damage-percent: 30
+      pearl-drop-multiplier: 2
+      pearl-refund-chance: 25
+
+  kotek:
+    name: "&fᴢᴡɪᴇʀᴢᴀ̨ᴛᴋᴏ &6&lᴋᴏᴛᴇᴋ"
+    rarity: "&6&lRZADKI"
+    model: "szafa:pet_kotek"
+    world-model: "szafa:pet_kotek"
+    description:
+      - "&5✦ &d&lᴢᴡɪɴɴʏ ᴌᴏᴡᴄᴀ"
+      - "&7Cichy jak cień, szybki jak błyskawica."
+      - ""
+      - "&5◆ &e&lᴅᴏᴅᴀᴛᴋɪ &fᴘᴏ ᴢᴀᴌᴏᴢ̇ᴇɴɪᴜ:"
+      - "&8➥ &3ꜱᴢʏʙᴋᴏꜱ́ᴄ́ &b&lII"
+      - "&8➥ &a&l-100% &aᴏʙʀᴀᴢ̇ᴇɴ́ ᴏᴅ ᴜᴘᴀᴅᴋᴜ &7(ᴢᴀᴡꜱᴢᴇ ɴᴀ ᴌᴀᴘʏ!)"
+    bonuses:
+      effects:
+        - "SPEED:1"
+      fall-damage-reduction: 100
+
+  killerek:
+    name: "&fᴢᴡɪᴇʀᴢᴀ̨ᴛᴋᴏ &c&lᴋɪʟʟᴇʀᴇᴋ"
+    rarity: "&c&lLEGENDARNY"
+    model: "szafa:pet_killerek"
+    world-model: "szafa:pet_killerek"
+    description:
+      - "&5✦ &d&lᴋʀᴡɪᴏᴢ̇ᴇʀᴄᴢʏ ᴛᴏᴡᴀʀᴢʏꜱᴢ"
+      - "&7Mały, ale wyczuwa krew wrogów z daleka."
+      - ""
+      - "&5◆ &e&lᴅᴏᴅᴀᴛᴋɪ &fᴘᴏ ᴢᴀᴌᴏᴢ̇ᴇɴɪᴜ:"
+      - "&8➥ &cᴢᴡɪᴇ̨ᴋꜱᴢᴏɴᴇ ᴏʙʀᴀᴢ̇ᴇɴɪᴀ ᴘʀᴢᴇᴄɪᴡ ɢʀᴀᴄᴢᴏᴍ ᴏ &c&l15%"
+      - "&8➥ &cᴘᴏ ᴢᴀʙɪᴄɪᴜ ɢʀᴀᴄᴢᴀ: &f&lꜱɪᴌᴀ ɪ &7(8s) &fɪ &d&lʀᴇɢᴇɴᴇʀᴀᴄᴊᴀ ɪɪ &7(4s)"
+      - "&8➥ &3ꜱᴢʏʙᴋᴏꜱ́ᴄ́ &b&lI"
+    bonuses:
+      pvp-damage-percent: 15
+      kill-effects:
+        - "STRENGTH:0:160"
+        - "REGENERATION:1:80"
+      effects:
+        - "SPEED:0"
+
+# ---------------------------------------------------------------
+#  KOSTIUMY (wirtualne - nie sa prawdziwa zbroja)
+#  icon-model  = ikona napiersnika w GUI (assets/szafa/items/<nazwa>.json)
+#  armor-model = wyglad na postaci (assets/szafa/equipment/<nazwa>.json)
+#  head-model  = (opcjonalnie) glowa jako model 3D: rogi, ryj, uszy, grzebien...
+#  Te same klucze bonusow co przy zwierzatkach.
+# ---------------------------------------------------------------
+costumes:
+  koziolek:
+    name: "&fᴋᴏꜱᴛɪᴜᴍ &f&lᴋᴏᴢɪᴏᴌᴋᴀ"
+    rarity: "&f&lZWYKŁY"
+    icon-model: "szafa:kostium_koziolek"
+    armor-model: "szafa:koziolek"
+    head-model: "szafa:costume_head_koziolek"
+    description:
+      - "&f✦ &lɢᴏ́ʀꜱᴋɪ ꜱᴋᴏᴄᴢᴇᴋ"
+      - "&7Skacze po skałach jak po schodach."
+      - ""
+      - "&7≡ &fWłaściwości:"
+      - "&8➥ &fᴇꜰᴇᴋᴛ: &a&lꜱᴋᴏᴋ &f&lII"
+      - "&8➥ &a&l-100% &fᴏʙʀᴀᴢ̇ᴇɴ́ ᴏᴅ &6&lᴜᴘᴀᴅᴋᴜ"
+    bonuses:
+      effects:
+        - "JUMP_BOOST:1"
+      fall-damage-reduction: 100
+
+  spiderman:
+    name: "&fᴋᴏꜱᴛɪᴜᴍ &c&lꜱᴘɪᴇᴅᴇʀᴍᴀɴᴀ"
+    rarity: "&c&lEPICKI"
+    icon-model: "szafa:kostium_spiderman"
+    armor-model: "szafa:spiderman"
+    head-model: "szafa:costume_head_spiderman"
+    description:
+      - "&c✦ &lᴘʀᴢʏᴊᴀᴄɪᴇʟ ꜱᴀ̨ꜱɪᴀᴅᴏ́ᴡ"
+      - "&7Wielka moc to wielka odpowiedzialność."
+      - ""
+      - "&7≡ &fWłaściwości:"
+      - "&8➥ &fᴇꜰᴇᴋᴛ: &b&lꜱᴢʏʙᴋᴏꜱ́ᴄ́ &f&lI"
+      - "&8➥ &c&l+10% &cᴢᴀᴅᴀᴡᴀɴʏᴄʜ ᴏʙʀᴀᴢ̇ᴇɴ́"
+      - "&8➥ &a&l-50% &fᴏʙʀᴀᴢ̇ᴇɴ́ ᴏᴅ &6&lᴜᴘᴀᴅᴋᴜ"
+    bonuses:
+      damage-percent: 10
+      fall-damage-reduction: 50
+      effects:
+        - "SPEED:0"
+
+  lodowy_straznik:
+    name: "&fᴋᴏꜱᴛɪᴜᴍ &b&lʟᴏᴅᴏᴡᴇɢᴏ ꜱᴛʀᴀᴢ̇ɴɪᴋᴀ"
+    rarity: "&b&lLEGENDARNY"
+    icon-model: "szafa:kostium_lodowy_straznik"
+    armor-model: "szafa:lodowy_straznik"
+    head-model: "szafa:costume_head_lodowy_straznik"
+    description:
+      - "&b✦ &lꜱᴛʀᴏ́ᴢ̇ ᴡɪᴇᴄᴢɴᴇᴊ ᴢɪᴍʏ"
+      - "&7Zbroja wykuta z lodu, który nigdy nie topnieje."
+      - ""
+      - "&7≡ &fWłaściwości:"
+      - "&8➥ &fᴇꜰᴇᴋᴛ: &6&lᴏᴅᴘᴏʀɴᴏꜱ́ᴄ́ ɴᴀ ᴏɢɪᴇɴ́"
+      - "&8➥ &9&l-15% &fᴏᴛʀᴢʏᴍʏᴡᴀɴʏᴄʜ ᴏʙʀᴀᴢ̇ᴇɴ́"
+      - "&8➥ &c&l+5% &cᴏʙʀᴀᴢ̇ᴇɴ́ ᴘʀᴢᴇᴄɪᴡ ɢʀᴀᴄᴢᴏᴍ"
+    bonuses:
+      damage-reduction: 15
+      pvp-damage-percent: 5
+      effects:
+        - "FIRE_RESISTANCE:0"
